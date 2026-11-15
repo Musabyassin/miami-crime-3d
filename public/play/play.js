@@ -6,7 +6,7 @@ const WS_URL = (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.
 
 let ws = null, code = '', role = '';
 let mySlot = 0, myColor = '';
-const input = { x: 0, y: 0, jump: false, action: false, punch: false, run: false };
+const input = { x: 0, y: 0, jump: false, action: false, punch: false, run: false, fire: false, swap: false, cam: 0 };
 let lastSent = '';
 window.__phone = { input, get role() { return role; }, get code() { return code; }, get slot() { return mySlot; } };
 
@@ -21,7 +21,7 @@ function sendInput(force) {
   const s = JSON.stringify(input);
   if (force || s !== lastSent) { lastSent = s; ws.send(JSON.stringify({ t: 'input', input })); }
 }
-setInterval(() => sendInput(false), 100);
+setInterval(() => sendInput(false), 50);
 
 function setKey(k, on) {
   input[k] = on;
@@ -63,6 +63,18 @@ stick.addEventListener('pointerdown', (e) => { e.preventDefault(); stickId = e.p
 stick.addEventListener('pointermove', (e) => { if (e.pointerId === stickId) stickMove(e); });
 stick.addEventListener('pointerup', stickEnd);
 stick.addEventListener('pointercancel', stickEnd);
+
+/* سحب لتدوير الكاميرا: نرسل مجموع الزاوية والتلفاز يحسب الفرق */
+const look = $('lookZone');
+let lookId = null, lookX = 0;
+look.addEventListener('pointerdown', (e) => { e.preventDefault(); lookId = e.pointerId; lookX = e.clientX; look.setPointerCapture(e.pointerId); });
+look.addEventListener('pointermove', (e) => {
+  if (e.pointerId !== lookId) return;
+  input.cam = Math.round((input.cam + (e.clientX - lookX) * 0.008) * 1000) / 1000; lookX = e.clientX;
+  sendInput(false);
+});
+const lookEnd = (e) => { if (e.pointerId === lookId) lookId = null; };
+look.addEventListener('pointerup', lookEnd); look.addEventListener('pointercancel', lookEnd);
 
 function sendControl(action) {
   if (ws && ws.readyState === 1) ws.send(JSON.stringify({ t: 'control', action }));
@@ -120,7 +132,7 @@ function join() {
         $('hudLbl').textContent = '👀 تشاهد • ' + ps.length + (ps.length === 1 ? ' لاعب' : ' لاعبين');
         renderStandings(msg.standings || ps);
       } else if (me) {
-        $('hudLbl').textContent = '💵 $' + me.score + ' • ' + '★'.repeat(me.stars || 0) + (me.stars ? '' : '☆ 0') + (me.inCar ? ' • 🚗 في سيارة' : '');
+        $('hudLbl').textContent = me.dead ? '☠️ سقطت — جارٍ نقلك للمستشفى…' : '💵 $' + me.score + ' • ' + '★'.repeat(me.stars || 0) + (me.stars ? '' : '☆') + ' • ❤ ' + (me.hp === undefined ? 100 : me.hp) + (me.armor ? ' 🛡' + me.armor : '') + (me.gun ? ' • ' + me.gun : '') + (me.inCar ? ' • 🚗' : '');
       }
       const phases = { lobby: 'الردهة', playing: 'تلعب الآن', paused: 'متوقفة مؤقتاً', over: 'انتهت اللعبة' };
       if (role !== 'spectator') $('phaseLbl').textContent = phases[msg.phase] || (msg.missionName || msg.phase || '');

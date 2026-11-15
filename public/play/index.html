@@ -32,7 +32,7 @@
   <div id="slotBadge" hidden></div>
   <div id="standings" hidden></div>
   <div id="specNote" hidden>👀 أنت تشاهد فقط — المقاعد الستة ممتلئة.</div>
-  <div class="spacer"></div>
+  <div class="spacer" id="lookZone"><span id="lookHint">↔ اسحب هنا لتدوير الكاميرا</span></div>
   <div id="deck">
     <div id="gameBtns">
       <button id="startBtn">▶ ابدأ</button>
@@ -44,13 +44,19 @@
         <div id="knob"></div>
       </div>
       <div class="actions">
-        <button id="btnRun" class="ctl small" data-k="run" aria-label="ركض">⚡<small>ركض</small></button>
-        <button id="btnPunch" class="ctl" data-k="punch" aria-label="ضرب">👊<small>ضرب</small></button>
-        <button id="btnAction" class="ctl" data-k="action" aria-label="ركوب">🚗<small>ركوب</small></button>
-        <button id="btnJump" class="ctl jump" data-k="jump" aria-label="قفز">⬆<small>قفز</small></button>
+        <div class="row">
+          <button id="btnRun" class="ctl small" data-k="run" aria-label="ركض">⚡<small>ركض</small></button>
+          <button id="btnSwap" class="ctl small" data-k="swap" aria-label="تبديل السلاح">🔄<small>سلاح</small></button>
+          <button id="btnPunch" class="ctl" data-k="punch" aria-label="ضرب">👊<small>ضرب</small></button>
+        </div>
+        <div class="row">
+          <button id="btnAction" class="ctl" data-k="action" aria-label="ركوب">🚗<small>ركوب</small></button>
+          <button id="btnFire" class="ctl fire" data-k="fire" aria-label="إطلاق نار">🔫<small>نار</small></button>
+          <button id="btnJump" class="ctl jump" data-k="jump" aria-label="قفز">⬆<small>قفز</small></button>
+        </div>
       </div>
     </div>
-    <p id="deckHint">العصا: تحرك • 🚗 ركوب/نزول (في الكراج: تغيير اللون) • 👊 ضرب (في الكراج: النيون)</p>
+    <p id="deckHint">العصا: تحرك • 🔫 نار (تصويب تلقائي؛ في السيارة = فرامل يد) • 🔄 تبديل السلاح • 🚗 ركوب/نزول • اسحب أعلى الشاشة لتدوير الكاميرا</p>
   </div>
 </div>
 

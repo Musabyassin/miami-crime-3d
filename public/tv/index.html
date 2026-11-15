@@ -46,12 +46,13 @@
       <span>المهمة:</span>
       <button class="mBtn sel" data-m="courier">📦 توصيل (+$600)</button>
       <button class="mBtn" data-m="race">🏁 سباق 9 نقاط (+$1000)</button>
+      <button class="mBtn" data-m="bounty">🎯 مطلوبون (+$1500)</button>
       <button class="mBtn" data-m="free">🌴 تجول حر</button>
     </div>
     <div class="slots" id="slots"></div>
     <button id="startBtn" class="bigBtn" disabled>▶ ابدأ اللعب</button>
-    <p class="hint">أو العب بلوحة المفاتيح مباشرة: WASD/الأسهم للحركة، مسافة للقفز، E للركوب، F للضرب، Shift للركض.</p>
-    <p class="hint">💡 في الكراج: زر «ركوب» يغيّر لون السيارة ($200)، وزر «ضرب» يشغّل النيون ($150).</p>
+    <p class="hint">أو العب بلوحة المفاتيح مباشرة: WASD/الأسهم للحركة، مسافة للقفز، E للركوب، F للضرب، G/Enter للنار، Q لتبديل السلاح، Shift للركض، Z/X أو سحب الفأرة لتدوير الكاميرا، C لتغيير نمط الكاميرا، M لتبديل المهمة.</p>
+    <p class="hint">💡 الكراج 🎨: «ركوب» يغيّر اللون ($200) و«ضرب» النيون ($150) • متجر السلاح 🔫: سلاح جديد / ذخيرة / درع • المستشفى 🏥: علاج مجاني. لاعب واحد = كاميرا خلف اللاعب، وأكثر = كاميرا علوية للجميع.</p>
   </div>
 </div>
 
@@ -63,6 +64,7 @@
   <div id="stage">
     <canvas id="cv"></canvas>
     <canvas id="minimap" width="200" height="200"></canvas>
+    <div id="flash"></div>
     <div id="toast" hidden></div>
     <div id="overlay" hidden>
       <div id="ovTitle"></div>

@@ -93,6 +93,8 @@ function normInput(inp) {
     x: clamp(o.x !== undefined ? o.x : ((o.right ? 1 : 0) - (o.left ? 1 : 0))),
     y: clamp(o.y !== undefined ? o.y : ((o.forward ? 1 : 0) - (o.back ? 1 : 0))),
     jump: !!o.jump, action: !!o.action, punch: !!o.punch, run: !!o.run || !!o.boost,
+    fire: !!o.fire, swap: !!o.swap,
+    cam: Math.max(-100000, Math.min(100000, Number(o.cam) || 0)), // مجموع زاوية سحب الكاميرا (راديان)
   };
 }
 

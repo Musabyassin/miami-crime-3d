@@ -51,7 +51,7 @@ function waitFor(ws, pred, timeout = 5000) {
   }
 
   for (let slot = 1; slot <= 6; slot++) {
-    const want = { x: slot % 2 ? 1 : -1, y: slot <= 3 ? 1 : -1, jump: slot === 3, action: slot === 2, punch: slot === 4, run: slot === 5 };
+    const want = { x: slot % 2 ? 1 : -1, y: slot <= 3 ? 1 : -1, jump: slot === 3, action: slot === 2, punch: slot === 4, run: slot === 5, fire: slot === 6, swap: slot === 1, cam: slot * 0.5 };
     const tvInput = waitFor(tv, (m) => m.t === 'input' && m.player === slot);
     phones[slot - 1].send(JSON.stringify({ t: 'input', input: want }));
     const got = await tvInput;

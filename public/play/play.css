@@ -30,16 +30,20 @@ button { font-family: inherit; }
 #controls { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
 #stick { position: relative; width: 132px; height: 132px; min-width: 132px; border-radius: 50%; background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.55); touch-action: none; }
 #knob { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; background: rgba(255,255,255,.85); box-shadow: 0 4px 12px rgba(0,0,0,.35); }
-.actions { display: flex; align-items: flex-end; gap: 8px; }
+.actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.actions .row { display: flex; align-items: flex-end; gap: 8px; }
+#lookZone { touch-action: none; display: flex; align-items: center; justify-content: center; border-radius: 16px; margin: 8px 0; background: rgba(255,255,255,.07); border: 1px dashed rgba(255,255,255,.25); }
+#lookHint { opacity: .55; font-size: 14px; pointer-events: none; }
+.ctl.fire { width: 84px; height: 84px; font-size: 32px; background: #ff4d5e; border-color: #fff; }
 .ctl { width: 62px; height: 62px; border-radius: 50%; border: 2px solid rgba(255,255,255,.6); background: rgba(255,255,255,.2); color: #fff; font-size: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; touch-action: none; }
 .ctl small { font-size: 11px; }
 .ctl.held { background: rgba(255,255,255,.55); transform: scale(.94); }
 .ctl.jump { width: 84px; height: 84px; font-size: 32px; background: #ffd166; color: #122; border-color: #fff; }
-.ctl.small { width: 52px; height: 52px; font-size: 20px; align-self: flex-start; }
+.ctl.small { width: 52px; height: 52px; font-size: 20px; }
 #deckHint { margin: 8px 2px 0; font-size: 13px; text-align: center; opacity: .85; }
 @media (orientation: landscape) {
   #stick { width: 108px; height: 108px; min-width: 108px; }
   #knob { width: 48px; height: 48px; margin: -24px 0 0 -24px; }
-  .ctl.jump { width: 70px; height: 70px; }
+  .ctl.jump, .ctl.fire { width: 70px; height: 70px; }
   .ctl { width: 54px; height: 54px; }
 }
