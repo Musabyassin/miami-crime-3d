@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>ميامي 3D | يد التحكم</title>
+<link rel="stylesheet" href="play.css">
+</head>
+<body>
+<div id="join">
+  <h1>🌴 ميامي 3D</h1>
+  <p>أدخل كود الغرفة الظاهر على شاشة التلفاز</p>
+  <input id="codeInput" inputmode="numeric" maxlength="4" placeholder="0000" autocomplete="off">
+  <input id="nameInput" maxlength="14" placeholder="اسمك (اختياري)" autocomplete="off">
+  <button id="joinBtn" class="bigBtn">🎮 انضم للعب</button>
+  <div id="joinErr" class="err"></div>
+  <p class="hint">أو افتح الرابط من التلفاز — سيُملأ الكود تلقائياً.</p>
+</div>
+
+<div id="pad" hidden>
+  <header id="topbar">
+    <div class="tbRow">
+      <span id="roomLbl" class="pill">غرفة ----</span>
+      <span id="connLbl" class="pill">⏳ يتصل…</span>
+    </div>
+    <div class="tbRow">
+      <span id="hudLbl" class="pill scores">💵 $500 • ⭐ 0</span>
+      <span id="phaseLbl" class="pill phase">الردهة</span>
+    </div>
+  </header>
+  <div id="slotBadge" hidden></div>
+  <div id="standings" hidden></div>
+  <div id="specNote" hidden>👀 أنت تشاهد فقط — المقاعد الستة ممتلئة.</div>
+  <div class="spacer"></div>
+  <div id="deck">
+    <div id="gameBtns">
+      <button id="startBtn">▶ ابدأ</button>
+      <button id="pauseBtn">⏸ إيقاف</button>
+      <button id="restartBtn">↻ إعادة</button>
+    </div>
+    <div id="controls">
+      <div id="stick" dir="ltr">
+        <div id="knob"></div>
+      </div>
+      <div class="actions">
+        <button id="btnRun" class="ctl small" data-k="run" aria-label="ركض">⚡<small>ركض</small></button>
+        <button id="btnPunch" class="ctl" data-k="punch" aria-label="ضرب">👊<small>ضرب</small></button>
+        <button id="btnAction" class="ctl" data-k="action" aria-label="ركوب">🚗<small>ركوب</small></button>
+        <button id="btnJump" class="ctl jump" data-k="jump" aria-label="قفز">⬆<small>قفز</small></button>
+      </div>
+    </div>
+    <p id="deckHint">العصا: تحرك • 🚗 ركوب/نزول (في الكراج: تغيير اللون) • 👊 ضرب (في الكراج: النيون)</p>
+  </div>
+</div>
+
+<script src="play.js"></script>
+</body>
+</html>

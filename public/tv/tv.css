@@ -1,0 +1,42 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body { font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; background: #0e1a2b; color: #fff; overflow: hidden; }
+button { font-family: inherit; cursor: pointer; }
+.bigBtn { font-size: 22px; font-weight: 700; padding: 14px 34px; border: 0; border-radius: 14px; background: #ff5e8a; color: #fff; }
+.bigBtn:disabled { opacity: .45; cursor: default; }
+.bigBtn.alt { background: #2f6df6; }
+.bigBtn.ghost { background: transparent; border: 2px solid #889; color: #ccd; }
+#lobby { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; background: linear-gradient(160deg, #ff9a5a, #ff5e8a 45%, #7b5cff); }
+.hero { background: rgba(10,16,30,.88); border-radius: 24px; padding: 32px 40px; max-width: 760px; text-align: center; box-shadow: 0 16px 50px rgba(0,0,0,.4); }
+.hero h1 { font-size: 52px; margin: 0 0 8px; }
+.hero p { font-size: 19px; line-height: 1.8; color: #dfe8ff; margin: 6px 0; }
+.codeRow { display: flex; gap: 10px; justify-content: center; margin: 18px 0 8px; direction: ltr; }
+.codeRow b { width: 58px; height: 68px; display: flex; align-items: center; justify-content: center; font-size: 38px; background: #fff; color: #122; border-radius: 12px; direction: ltr; }
+.status { font-size: 17px; color: #ffd166; min-height: 24px; }
+.missions { display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap; margin: 16px 0; font-size: 18px; }
+.mBtn { font-size: 17px; padding: 10px 16px; border-radius: 12px; border: 2px solid #556; background: #1c2430; color: #fff; }
+.mBtn.sel { border-color: #ffd166; background: #3a2f10; }
+.slots { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 14px 0 20px; min-height: 44px; }
+.slot { padding: 10px 14px; border-radius: 12px; background: #1c2430; border: 2px dashed #556; font-size: 17px; min-width: 96px; }
+.slot.taken { border-style: solid; border-color: var(--c, #fff); background: #222; }
+.slot .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--c, #fff); margin-inline-end: 6px; }
+.hint { font-size: 15px; color: #9fb0d0; }
+#game { height: 100vh; display: flex; flex-direction: column; }
+#hudbar { display: flex; align-items: center; gap: 12px; padding: 8px 14px; background: #101826; flex-wrap: wrap; }
+#chips { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+.chip { display: flex; gap: 8px; align-items: center; background: #1c2430; border-radius: 999px; padding: 6px 12px; font-size: 16px; border: 2px solid var(--c, #888); white-space: nowrap; }
+.chip .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--c, #888); }
+#barMid { font-size: 18px; font-weight: 700; }
+#stage { position: relative; flex: 1; min-height: 0; background: #000; }
+#cv { width: 100%; height: 100%; display: block; }
+#minimap { position: absolute; top: 12px; inset-inline-start: 12px; width: 200px; height: 200px; border: 3px solid rgba(255,255,255,.7); border-radius: 12px; background: #0b1526; opacity: .95; }
+#toast { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,.75); padding: 10px 22px; border-radius: 999px; font-size: 20px; font-weight: 700; }
+#overlay { position: absolute; inset: 0; background: rgba(5,10,20,.82); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 20px; }
+#ovTitle { font-size: 44px; font-weight: 800; }
+#ovSub { font-size: 22px; color: #ffd166; }
+#ovStandings { font-size: 19px; line-height: 2; }
+.ovBtns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+#bar { display: flex; gap: 10px; align-items: center; padding: 8px 14px; background: #101826; font-size: 16px; flex-wrap: wrap; }
+#bar button { font-size: 16px; padding: 8px 14px; border-radius: 10px; border: 1px solid #445; background: #1c2430; color: #fff; }
+#barCode b { direction: ltr; unicode-bidi: isolate; }

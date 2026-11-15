@@ -1,0 +1,45 @@
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body { font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; background: linear-gradient(160deg, #ff9a5a, #ff5e8a 45%, #7b5cff); color: #fff; overflow: hidden; }
+button { font-family: inherit; }
+#join { min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; text-align: center; }
+#join h1 { font-size: 42px; margin: 0; }
+#join p { font-size: 18px; margin: 0; }
+#join input { font-size: 26px; text-align: center; padding: 12px; border-radius: 14px; border: 0; width: min(320px, 86vw); direction: ltr; }
+#join input#nameInput { font-size: 20px; }
+.bigBtn { font-size: 22px; font-weight: 700; padding: 14px 34px; border: 0; border-radius: 14px; background: #1c2430; color: #fff; }
+.bigBtn:disabled { opacity: .5; }
+.err { color: #ffe08a; font-size: 17px; min-height: 22px; }
+.hint { font-size: 15px; opacity: .85; }
+#pad { height: 100dvh; display: flex; flex-direction: column; padding: 10px 12px calc(10px + env(safe-area-inset-bottom)); }
+#topbar { display: flex; flex-direction: column; gap: 6px; }
+.tbRow { display: flex; gap: 8px; }
+.pill { background: rgba(0,0,0,.45); border-radius: 999px; padding: 6px 12px; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pill.scores { flex: 1; }
+#slotBadge { margin-top: 8px; align-self: flex-start; padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: 16px; border: 2px solid #fff; }
+#standings { margin-top: 8px; background: rgba(0,0,0,.45); border-radius: 12px; padding: 8px 12px; font-size: 15px; line-height: 1.9; max-height: 34vh; overflow: auto; }
+.stTitle { font-weight: 700; }
+.stRow { display: flex; gap: 8px; align-items: center; }
+.chipDot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+#specNote { margin-top: 8px; background: rgba(0,0,0,.5); border-radius: 12px; padding: 10px; text-align: center; font-size: 16px; }
+.spacer { flex: 1; }
+#deck { background: rgba(0,0,0,.35); border-radius: 20px; padding: 10px 12px 8px; }
+#gameBtns { display: flex; gap: 8px; justify-content: center; margin-bottom: 10px; }
+#gameBtns button { font-size: 15px; padding: 7px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,.5); background: rgba(255,255,255,.15); color: #fff; }
+#controls { display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; }
+#stick { position: relative; width: 132px; height: 132px; min-width: 132px; border-radius: 50%; background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.55); touch-action: none; }
+#knob { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; background: rgba(255,255,255,.85); box-shadow: 0 4px 12px rgba(0,0,0,.35); }
+.actions { display: flex; align-items: flex-end; gap: 8px; }
+.ctl { width: 62px; height: 62px; border-radius: 50%; border: 2px solid rgba(255,255,255,.6); background: rgba(255,255,255,.2); color: #fff; font-size: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; touch-action: none; }
+.ctl small { font-size: 11px; }
+.ctl.held { background: rgba(255,255,255,.55); transform: scale(.94); }
+.ctl.jump { width: 84px; height: 84px; font-size: 32px; background: #ffd166; color: #122; border-color: #fff; }
+.ctl.small { width: 52px; height: 52px; font-size: 20px; align-self: flex-start; }
+#deckHint { margin: 8px 2px 0; font-size: 13px; text-align: center; opacity: .85; }
+@media (orientation: landscape) {
+  #stick { width: 108px; height: 108px; min-width: 108px; }
+  #knob { width: 48px; height: 48px; margin: -24px 0 0 -24px; }
+  .ctl.jump { width: 70px; height: 70px; }
+  .ctl { width: 54px; height: 54px; }
+}

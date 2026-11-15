@@ -1,0 +1,1 @@
+{"dependencies":{"ws":"8.18.0"},"description":"Original 3D Miami-style city game (TV display + phone controllers, room codes, up to 6 players). No GTA/Rockstar assets, code, or trademarks.","engines":{"node":">=18"},"main":"server.js","name":"miami-crime-3d","scripts":{"start":"node server.js","test":"node test/relay.test.js"},"version":"1.0.0"}

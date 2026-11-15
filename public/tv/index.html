@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ميامي 3D | شاشة التلفاز</title>
+<link rel="stylesheet" href="tv.css">
+<script>
+/* تحميل Three.js من CDN مع بديل: unpkg أولاً، ثم jsdelivr إذا تعذّر.
+   (خريطة الاستيراد يجب أن تُبنى قبل تحميل وحدة اللعبة، لذا تُبنى هنا.) */
+(function () {
+  var URLS = [
+    'https://unpkg.com/three@0.160.0/build/three.module.js',
+    'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'
+  ];
+  function loadTv(threeUrl) {
+    var im = document.createElement('script');
+    im.type = 'importmap';
+    im.textContent = JSON.stringify({ imports: { three: threeUrl } });
+    document.head.appendChild(im);
+    var s = document.createElement('script');
+    s.type = 'module'; s.src = 'tv.js';
+    document.body.appendChild(s);
+  }
+  function fail() {
+    var el = document.getElementById('lobbyStatus');
+    if (el) el.textContent = '⚠ تعذّر تحميل مكتبة الرسوميات ثلاثية الأبعاد — تحقق من اتصال الإنترنت ثم أعد تحميل الصفحة';
+  }
+  fetch(URLS[0], { method: 'HEAD' }).then(function (r) {
+    if (r.ok) loadTv(URLS[0]); else loadTv(URLS[1]);
+  }).catch(function () { loadTv(URLS[1]); });
+  setTimeout(function () { if (!window.__miami) fail(); }, 15000);
+})();
+</script>
+</head>
+<body>
+<div id="lobby">
+  <div class="hero">
+    <h1>🌴 ميامي 3D</h1>
+    <p>العبوا من هواتفكم — التلفاز يعرض المدينة والهاتف هو يد التحكم.<br>
+    حتى 6 لاعبين في نفس الغرفة! افتح صفحة الهاتف وأدخل الكود.</p>
+    <div class="codeRow" id="codeRow"><b>•</b><b>•</b><b>•</b><b>•</b></div>
+    <div class="status" id="lobbyStatus">⏳ بانتظار الاتصال بالخادم…</div>
+    <div class="missions">
+      <span>المهمة:</span>
+      <button class="mBtn sel" data-m="courier">📦 توصيل (+$600)</button>
+      <button class="mBtn" data-m="race">🏁 سباق 9 نقاط (+$1000)</button>
+      <button class="mBtn" data-m="free">🌴 تجول حر</button>
+    </div>
+    <div class="slots" id="slots"></div>
+    <button id="startBtn" class="bigBtn" disabled>▶ ابدأ اللعب</button>
+    <p class="hint">أو العب بلوحة المفاتيح مباشرة: WASD/الأسهم للحركة، مسافة للقفز، E للركوب، F للضرب، Shift للركض.</p>
+    <p class="hint">💡 في الكراج: زر «ركوب» يغيّر لون السيارة ($200)، وزر «ضرب» يشغّل النيون ($150).</p>
+  </div>
+</div>
+
+<div id="game" hidden>
+  <div id="hudbar">
+    <div id="chips"></div>
+    <span id="barMid">🌴 تجول حر</span>
+  </div>
+  <div id="stage">
+    <canvas id="cv"></canvas>
+    <canvas id="minimap" width="200" height="200"></canvas>
+    <div id="toast" hidden></div>
+    <div id="overlay" hidden>
+      <div id="ovTitle"></div>
+      <div id="ovSub"></div>
+      <div id="ovStandings"></div>
+      <div class="ovBtns">
+        <button id="ovRestart" class="bigBtn">↻ إعادة اللعب</button>
+        <button id="ovLobby" class="bigBtn ghost">العودة للردهة</button>
+      </div>
+    </div>
+  </div>
+  <div id="bar">
+    <span id="barCode">كود الغرفة: <b>----</b></span>
+    <span id="barCtrl">📵 هاتف غير متصل</span>
+    <span id="barPhase">الردهة</span>
+    <button id="missionBtn">📦 مهمة جديدة</button>
+    <button id="pauseBtn">⏸ إيقاف</button>
+    <button id="restartBtn">↻ إعادة</button>
+    <button id="lobbyBtn">🏠 الردهة</button>
+  </div>
+</div>
+
+<!-- tv.js يُحمَّل من برنامج التحميل أعلاه بعد بناء خريطة الاستيراد -->
+</body>
+</html>
